@@ -8,6 +8,15 @@ import logInvalidInput from './loggers/logInvalidInput.js';
 import cd from './commands/cd.js';
 import ls from './commands/ls.js';
 import cat from './commands/cat.js';
+import add from './commands/add.js';
+import rn from './commands/rn.js';
+import cp from './commands/cp.js';
+import mv from './commands/mv.js';
+import rm from './commands/rm.js';
+import os from './commands/os/index.js';
+import hash from './commands/hash.js';
+import compress from './commands/compress.js';
+import decompress from './commands/decompress.js';
 
 const input = process.stdin;
 const output = process.stdout;
@@ -39,6 +48,42 @@ const runApp = () => {
 
         case COMMANDS.CAT:
           await cat(command.slice(4));
+          break;
+
+        case COMMANDS.ADD:
+          await add(command.slice(4));
+          break;
+
+        case COMMANDS.RN:
+          await rn(command.slice(3));
+          break;
+
+        case COMMANDS.CP:
+          await cp(command.slice(3), false);
+          break;
+
+        case COMMANDS.MV:
+          await mv(command.slice(3));
+          break;
+
+        case COMMANDS.RM:
+          await rm(command.slice(3), false);
+          break;
+
+        case COMMANDS.OS:
+          os(command.slice(5));
+          break;
+
+        case COMMANDS.HASH:
+          await hash(command.slice(5));
+          break;
+
+        case COMMANDS.COMPRESS:
+          await compress(command.slice(9));
+          break;
+
+        case COMMANDS.DECOMPRESS:
+          await decompress(command.slice(11));
           break;
 
         default:
